@@ -26,7 +26,7 @@ async function get(url){
 };
 btn.addEventListener("click",()=>{
         cty=search.querySelector("input").value;
-        let newrl=`https://api.openweathermap.org/data/2.5/weather?q=${cty.toLowerCase()}&appid=45b3cc60d72d663abbc82e54a0aa5bd9&units=metric`;
+        let newrl=`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cty)}&appid=45b3cc60d72d663abbc82e54a0aa5bd9&units=metric`;
         get(newrl);
         // changeCity(cty);
 });
