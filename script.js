@@ -8,21 +8,20 @@ let ctyname=document.querySelector(".cityname");
 var cty;
 
 let prm,data;
-async function get(url){
+async function get(url) {
+    const response = await fetch(url);
+    const data = await response.json();
 
-        prm=await fetch(url);
-        
-        if(!prm.ok){
-                document.querySelector(".error").style.display="block";
-                document.querySelector(".weather").style.display="none";
-        }
-        else{
+    console.log(data);
 
-               data = await prm.json();
-               console.log(data);
-               changeTemp(data.main.temp,data.main.humidity,data.wind.speed);
-               changeCity(cty);
-        }
+    if (!response.ok) {
+        alert(data.message);
+        return;
+    }
+
+    changeTemp(data.main.temp, data.main.humidity, data.wind.speed);
+    changeCity(data.name);
+}
         
 };
 btn.addEventListener("click", () => {
