@@ -22,37 +22,36 @@ async function get(url) {
     changeTemp(data.main.temp, data.main.humidity, data.wind.speed);
     changeCity(data.name);
 }
-        
-};
 btn.addEventListener("click", () => {
-    alert("Button clicked");
+    cty = search.querySelector("input").value;
+
+    let newUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cty)}&appid=${apiKey}&units=metric`;
+
+    get(newUrl);
 });
 
 let temp=document.querySelector(".temp");
 let humidity=document.querySelector(".humidity");
 let wind=document.querySelector(".wind");
 let wther=document.querySelector(".weather_icon");
-function changeTemp(tmp,hum,wnd){
-        temp.innerHTML=`${Math.round(tmp)}&degC`;
-        humidity.innerText=`${hum}%`;
-        wind.innerText=`${wnd}km/hr`;
-        if(data.weather[0].main=="Clouds"){
-                wther.src="clouds.png";
-        }
-        else if(data.weather[0].main=="Rain"){
-                wther.src="rain.png";
-        }
-        else if(data.weather[0].main=="Clear"){
-                wther.src="clear.png";
-        }
-        else if(data.weather[0].main=="Drizzle"){
-                wther.src="drizzle.png";
-        }
-        else if(data.weather[0].main=="Mist"){
-                wther.src="mist.png";
-        }
-        document.querySelector(".weather").style.display="block";
+function changeTemp(tmp, hum, wnd, weather) {
+    temp.innerHTML = `${Math.round(tmp)}&deg;C`;
+    humidity.innerText = `${hum}%`;
+    wind.innerText = `${wnd} km/hr`;
 
+    if (weather == "Clouds") {
+        wther.src = "clouds.png";
+    } else if (weather == "Rain") {
+        wther.src = "rain.png";
+    } else if (weather == "Clear") {
+        wther.src = "clear.png";
+    } else if (weather == "Drizzle") {
+        wther.src = "drizzle.png";
+    } else if (weather == "Mist") {
+        wther.src = "mist.png";
+    }
+
+    document.querySelector(".weather").style.display = "block";
 }
 function changeCity(newcty){
         ctyname.innerText=newcty.charAt(0).toUpperCase() + newcty.slice(1);
