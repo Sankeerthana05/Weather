@@ -31,8 +31,6 @@ btn.addEventListener("click", () => {
 
     get(newrl);
 });
-        
-});
 
 let temp=document.querySelector(".temp");
 let humidity=document.querySelector(".humidity");
