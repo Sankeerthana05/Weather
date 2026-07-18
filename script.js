@@ -26,9 +26,14 @@ async function get(url){
         
 };
 btn.addEventListener("click", () => {
+    console.log("Button clicked");
+
     cty = search.querySelector("input").value;
+    console.log(cty);
 
     let newrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cty)}&appid=${apiKey}&units=metric`;
+
+    console.log(newrl);
 
     get(newrl);
 });
