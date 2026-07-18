@@ -12,13 +12,14 @@ async function get(url){
 
         prm=await fetch(url);
         
-        if(prm.status==404){
+        if(!prm.ok){
                 document.querySelector(".error").style.display="block";
                 document.querySelector(".weather").style.display="none";
         }
         else{
 
                data = await prm.json();
+               console.log(data);
                changeTemp(data.main.temp,data.main.humidity,data.wind.speed);
                changeCity(cty);
         }
