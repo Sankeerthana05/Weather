@@ -1,4 +1,4 @@
-const url ="https://api.openweathermap.org/data/2.5/weather?q=visakhapatnam&appid=45b3cc60d72d663abbc82e54a0aa5bd9&units=metric";
+const apiKey = "abcd1234efgh5678ijkl9012mnop3456";
 // let prm=fetch(url);
 
 
@@ -24,11 +24,14 @@ async function get(url){
         }
         
 };
-btn.addEventListener("click",()=>{
-        cty=search.querySelector("input").value;
-        let newrl=`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cty)}&appid=45b3cc60d72d663abbc82e54a0aa5bd9&units=metric`;
-        get(newrl);
-        // changeCity(cty);
+btn.addEventListener("click", () => {
+    cty = search.querySelector("input").value;
+
+    let newrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cty)}&appid=${apiKey}&units=metric`;
+
+    get(newrl);
+});
+        
 });
 
 let temp=document.querySelector(".temp");
